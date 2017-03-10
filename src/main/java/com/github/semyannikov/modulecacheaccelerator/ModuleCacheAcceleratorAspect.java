@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ModuleCacheAcceleratorAspect {
 
     private Map<IDfId, String> downloadedObjectNames = new ConcurrentHashMap<IDfId, String>();
-    private boolean isMakingCacheConsistent = false;
+    private volatile boolean isMakingCacheConsistent = false;
 
     @Pointcut(value = "call(* *..InboundModuleMetadata.BofFile.persist(java.io.File)) " +
             "&& target(bofFile)")
