@@ -1,0 +1,10 @@
+<aspectj>
+    <aspects>
+        <aspect name="com.github.semyannikov.modulecacheaccelerator.ModuleCacheAcceleratorAspect"/>
+    </aspects>
+    <weaver options="-verbose">
+        <include within="com.github.semyannikov.modulecacheaccelerator.ModuleCacheAcceleratorAspect"/>
+        <include within="com.github.semyannikov.*"/>
+        <include within="com.documentum.fc.client.impl.bof.cache.*" />
+    </weaver>
+</aspectj>
