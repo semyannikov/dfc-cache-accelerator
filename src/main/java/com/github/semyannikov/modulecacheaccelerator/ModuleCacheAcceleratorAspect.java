@@ -40,8 +40,10 @@ public class ModuleCacheAcceleratorAspect {
             String fileName = downloadedObjectNames.get(object.getObjectId());
             if (fileName == null) {
                 joinPoint.proceed();
+                downloadedObjectNames.put(object.getObjectId(), (String) fileNameField.get(bofFile));
+            } else {
+                fileNameField.set(bofFile, fileName);
             }
-            downloadedObjectNames.put(object.getObjectId(), (String) fileNameField.get(bofFile));
         } finally {
             sysObjectField.setAccessible(false);
             fileNameField.setAccessible(false);
